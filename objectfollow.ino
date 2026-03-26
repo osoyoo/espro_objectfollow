@@ -84,8 +84,8 @@ void setup()
 }
 
 void auto_following(){
- int IRvalueLeft= digitalRead(RightObstacleSensor);
-  int IRvalueRight=digitalRead(LeftObstacleSensor);
+ int IRvalueLeft= digitalRead(LeftObstacleSensor);
+  int IRvalueRight=digitalRead(RightObstacleSensor);
  if (IRvalueLeft==LOW && IRvalueRight==LOW)
  { 
 
@@ -98,13 +98,13 @@ void auto_following(){
     }
  else if (IRvalueLeft==LOW && IRvalueRight==HIGH)
  { 
-  //only left sensor detect obstacle
-      go_Advance(SPEED,TURN_SPEED);  //Turn left
+  Serial.println("left");
+      turn_left(SLOW_SPEED,TURN_SPEED);  //Turn left
  }
   else if (IRvalueLeft==HIGH && IRvalueRight==LOW)
  { 
-   //only right sensor detect obstacle
-     go_Advance(TURN_SPEED,SPEED);  //Turn left
+    Serial.println("right");
+     turn_right(TURN_SPEED,SLOW_SPEED);  //Turn left
   
  }
 }
